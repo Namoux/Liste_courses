@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 40px auto;
+    text-align: center;
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    min-height: 100vh;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+}
+
+li.checked {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Bouton "Supprimer tout" */
+button#deleteAllBtn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+}
+
+button#deleteAllBtn:hover {
+    background-color: #e60000;
+}
+
+/* Écrans petits (mobile) */
+@media (max-width: 600px) {
+    body {
+        max-width: 95%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 14px;
+        align-self: center;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+/* Écrans moyens (tablette) */
+@media (max-width: 900px) {
+    body {
+        max-width: 95%;
+        margin: 0 auto;
+        padding: 40px;
+    }
+
+    form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 14px;
+        align-self: center;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
