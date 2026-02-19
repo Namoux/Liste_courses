@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste de courses</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>📑 Liste de courses</title>
 </head>
+
 <body>
+    <header>
+        <div class="title">
+            <h1><i class="fa-solid fa-list-check"></i> Liste de courses</h1>
+            <a href="#"><i id="user" class="fa-regular fa-circle-user"></i></a>
+        </div>
+        <nav class="connexionUser">
+            <p><a href="login.html">Connexion</a></p>
+            <p><a href="register.html">Inscription</a></p>
+            <button id="logoutBtn" type="button">Déconnexion</button>
+        </nav>
+    </header>
 
-<h1>Liste de courses</h1>
-
-<p>
-    <a href="login.html">Connexion</a> | <a href="register.html">Inscription</a>
-</p>
-
-<button id="logoutBtn" type="button">Déconnexion</button>
-
-<form id="form">
-    <input id="nom" placeholder="Article" required>
-    <input id="quantite" placeholder="Quantité" required>
-    <button type="submit">Ajouter</button>
-</form>
-
-<button id="deleteAllBtn">Tout supprimer ❌</button>
-
-<ul id="liste"></ul>
-
-<script src="js/script.js"></script>
+    <main>
+        <form id="form">
+            <input id="nom" autocomplete="off" placeholder="Article" required>
+            <input id="quantite" autocomplete="off" placeholder="Quantité" required>
+            <button type="submit">Ajouter</button>
+        </form>
+    
+        <ul id="liste"></ul>
+    </main>
+    
+    <footer>
+        <button id="deleteAllBtn"><i class="fa-regular fa-trash-can"></i></button>
+    </footer>
 </body>
+<script src="js/script.js"></script>
+
 </html>
