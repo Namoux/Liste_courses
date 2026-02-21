@@ -43,21 +43,55 @@ header .title a {
     position: fixed;
     top: 0%;
     left: 100%;
-    translate: 1;
-    transition: 0.7s;
+    transform: translateX(0);
+    transition: left 0.3s ease;
     z-index: 3;
+    padding: 60px 20px 20px;
+    /* espace en haut pour le bouton retour */
+    background: linear-gradient(135deg, #8ec5fc 0%, #e0c3fc 100%);
 }
 
-.connexionUser {
+.connexionUser.select {
     left: 50%;
+}
+
+.connexionUser #logoutBtn {
+    margin-top: auto;
+    /* pousse en bas */
+    margin-left: auto;
+    /* centre horizontalement avec margin-right */
+    margin-right: auto;
+    width: auto;
+    padding: 6px 12px;
+    font-size: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Bouton retour en haut à gauche du panneau */
+.connexionUser .menuClose {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.connexionUser a {
+    text-decoration: none;
+    color: black;
 }
 
 form {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     gap: 5px;
-    margin-bottom: 20px;
+    margin: 30px 0px;
 }
-
 
 
 input,
@@ -72,14 +106,18 @@ button {
 ul {
     list-style: none;
     padding: 0;
+    width: min(700px, 100%);
+    /* largeur contrôlée */
+    margin: 0 auto;
+    /* centre horizontalement */
 }
 
 li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
-    padding: 8px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
 }
