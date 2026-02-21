@@ -7,7 +7,9 @@ class ProductService
     /**
      * Injection du repository (accès DB).
      */
-    public function __construct(private ProductRepository $repo) {}
+    public function __construct(private ProductRepository $repo)
+    {
+    }
 
     /**
      * Retourne les produits de l'utilisateur.
@@ -33,8 +35,18 @@ class ProductService
         $nom = trim($nom);
         $quantite = trim($quantite);
 
-        if ($nom === '' || $quantite === '') {
-            throw new InvalidArgumentException('nom et quantite requis');
+        // Nom requis
+        if ($nom === '') {
+            throw new InvalidArgumentException('nom requis');
+        }
+
+        // Quantité optionnelle: vide => 1
+        if ($quantite === '') {
+            $quantite = '1';
+        }
+        // Si renseignée, elle doit être un entier positif
+        if (!preg_match('/^\d+$/', $quantite) || (int) $quantite <= 0) {
+            throw new InvalidArgumentException('quantite doit etre un entier positif');
         }
 
         $this->repo->create($userId, $nom, $quantite);

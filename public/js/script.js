@@ -26,8 +26,11 @@ async function handleAddProduct(event, dom) {
     event.preventDefault();
 
     const nom = dom.nomInput?.value?.trim();
-    const quantite = dom.quantiteInput?.value?.trim();
-    if (!nom || !quantite) return;
+    let quantite = dom.quantiteInput?.value?.trim() ?? '';
+    if (!nom) return;
+
+    // Quantité vide => 1
+    if (!quantite) quantite = '1';
 
     await fetchApi('api/addProduct.php', {
         method: 'POST',
