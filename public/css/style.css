@@ -2,16 +2,37 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    text-align: center;
-    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-    min-height: 100vh;
+    height: 100%;
 }
 
-h1 {
-    margin-bottom: 20px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+/* header/footer gardent leur hauteur */
+header,
+footer {
+    flex: 0 0 auto;
+    margin: 30px;
+}
+
+/* zone centrale qui contient form + liste */
+main {
+    flex: 1 1 auto;
+    min-height: 0;
+    /* indispensable pour autoriser le scroll interne */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* le scroll sera sur la liste uniquement */
 }
 
 header .title {
@@ -20,6 +41,7 @@ header .title {
     justify-content: flex-end;
     align-items: center;
     min-height: 48px;
+    padding: 0px 40px;
 }
 
 header .title h1 {
@@ -41,18 +63,17 @@ header .title a {
     height: 100vh;
     width: 50vw;
     position: fixed;
-    top: 0%;
-    left: 100%;
-    transform: translateX(0);
-    transition: left 0.3s ease;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform .3s ease;
     z-index: 3;
     padding: 60px 20px 20px;
-    /* espace en haut pour le bouton retour */
-    background: linear-gradient(135deg, #8ec5fc 0%, #e0c3fc 100%);
+    background: linear-gradient(135deg, #8ec5fc 0%, #6418aa 100%);
 }
 
 .connexionUser.select {
-    left: 50%;
+    transform: translateX(0);
 }
 
 .connexionUser #logoutBtn {
@@ -90,9 +111,9 @@ form {
     flex-direction: row;
     justify-content: center;
     gap: 5px;
-    margin: 30px 0px;
+    margin-top: 0px;
+    margin-bottom: 40px;
 }
-
 
 input,
 button {
@@ -104,22 +125,33 @@ button {
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    width: min(700px, 100%);
-    /* largeur contrôlée */
-    margin: 0 auto;
-    /* centre horizontalement */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    /* scroll interne */
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    padding: 40px 200px;
 }
 
 li {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    /* check | texte | bouton delete */
     align-items: center;
+    column-gap: 10px;
     margin-bottom: 8px;
     padding: 8px 12px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
+}
+
+/* Le texte commence bien au début de sa colonne */
+li span {
+    text-align: left;
+    justify-self: start;
 }
 
 li.checked {
@@ -141,9 +173,10 @@ button#deleteAllBtn {
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 20px;
-    margin-top: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background 0.3s;
+    display: block;
+    margin: 12px auto 0;
 }
 
 button#deleteAllBtn:hover {
@@ -153,9 +186,9 @@ button#deleteAllBtn:hover {
 /* Écrans petits (mobile) */
 @media (max-width: 600px) {
     body {
-        max-width: 95%;
-        margin: 20px auto;
-        padding: 10px;
+        max-width: none;
+        margin: 0;
+        padding: 0;
     }
 
     form {
@@ -175,8 +208,44 @@ button#deleteAllBtn:hover {
         align-self: center;
     }
 
-    h1 {
-        font-size: 24px;
+    header .title {
+        position: relative;
+    }
+
+    header .title h1 {
+        margin: 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 44px;
+        /* espace pour le bouton user */
+        padding-left: 12px;
+        font-size: 1.5rem;
+    }
+
+    header .title a {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 1.4rem;
+    }
+
+    ul {
+        padding: 0px;
+    }
+
+    li {
+        grid-template-columns: auto 1fr auto;
+        column-gap: 8px;
+        padding: 10px;
+    }
+
+    li input[type="checkbox"] {
+        margin: 0;
+        /* évite le décalage natif */
     }
 }
 
@@ -185,7 +254,7 @@ button#deleteAllBtn:hover {
     body {
         max-width: 95%;
         margin: 0 auto;
-        padding: 40px;
+        padding: 0px 30px;
     }
 
     form {
@@ -205,7 +274,32 @@ button#deleteAllBtn:hover {
         align-self: center;
     }
 
-    h1 {
-        font-size: 24px;
+    header .title {
+        position: relative;
+    }
+
+    header .title h1 {
+        margin: 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 44px;
+        /* espace pour le bouton user */
+        padding-left: 12px;
+        font-size: 1.7rem;
+    }
+
+    header .title a {
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 1.7rem;
+    }
+
+    ul {
+        padding: 0px;
     }
 }
