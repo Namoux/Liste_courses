@@ -60,11 +60,12 @@ header .title a {
 .connexionUser {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 50vw;
     position: fixed;
     top: 0;
     right: 0;
+    bottom: 0;
+    height: auto;
+    width: min(85vw, 360px);
     transform: translateX(100%);
     transition: transform .3s ease;
     z-index: 3;
@@ -203,6 +204,7 @@ button#deleteAllBtn:hover {
     form {
         flex-direction: column;
         gap: 10px;
+        margin-bottom: 15px;
     }
 
     input {
@@ -215,6 +217,11 @@ button#deleteAllBtn:hover {
         padding: 12px 24px;
         font-size: 14px;
         align-self: center;
+    }
+
+    header,
+    footer {
+        margin: 10px;
     }
 
     header .title {
@@ -247,14 +254,12 @@ button#deleteAllBtn:hover {
     }
 
     li {
-        grid-template-columns: auto 1fr auto;
-        column-gap: 8px;
-        padding: 10px;
+
+        padding: 6px;
     }
 
-    li input[type="checkbox"] {
-        margin: 0;
-        /* évite le décalage natif */
+    .connexionUser {
+        width: 50vw;
     }
 }
 
@@ -269,6 +274,7 @@ button#deleteAllBtn:hover {
     form {
         flex-direction: column;
         gap: 10px;
+        margin-bottom: 15px;
     }
 
     input {
@@ -281,6 +287,11 @@ button#deleteAllBtn:hover {
         padding: 12px 24px;
         font-size: 14px;
         align-self: center;
+    }
+
+    header,
+    footer {
+        margin: 10px;
     }
 
     header .title {
@@ -310,5 +321,13 @@ button#deleteAllBtn:hover {
 
     ul {
         padding: 0px;
+    }
+
+    li {
+        padding: 6px;
+    }
+
+    .connexionUser {
+        width: 50vw;
     }
 }
